@@ -56,7 +56,7 @@ const cars = [
         manufacturer: 'Seat',
         model: 'Ibiza',
         type: 'metano'
-    }
+    },
     {
         manufacturer: 'Audi',
         model: 'R8',
@@ -64,14 +64,12 @@ const cars = [
     },
 ];
 
-const gasolineCars = cars.filter( (auto) >= auto.type === 'benzina');
+const gasolineCars = cars.filter((auto) => auto.type.toLowerCase() === 'benzina');
 
-const dieselCars = cars.filter( (auto) => {
-    auto.type === 'diesel';
-});
+const dieselCars = cars.filter((auto) => auto.type.toLowerCase() === 'diesel');
 
-const otherCars = cars.filter( (auto) => {
-    return auto.type !== 'benzina' || auto.type !== 'diesel';
+const otherCars = cars.filter((auto) => {
+    return auto.type.toLowerCase() !== 'benzina' && auto.type.toLowerCase() !== 'diesel';
 });
 
 console.log('Auto a benzina');
@@ -84,3 +82,12 @@ console.log(dieselCars);
 
 console.log('Tutte le altre auto');
 console.log(otherCars);
+
+/*     
+    1- Che cosa fa questo codice?
+    Stampa le automobili, dividendole in 3 array partendo da un array con tutti i tipi di auto, 1 array per auto a benzina, uno per array diesel, e uno che contiene tutte le altre
+    2- Sono presenti errori di sintassi?
+    Manca una virgola nella definizione dell'array Riga 59, scritta male la arrow function in riga 67, alcuni type hanno la prima lettera Maiuscola, quindi inserisco in coda a auto.type il metodo toLowerCase
+    3- Sono presenti errori logici?
+    Si uso operatore OR invece di operatore AND nella condizione del filter in riga 72, in quanto dobbiamo prendere tutte le auto il cui tipo è SIA NO Benzina NO Diesel
+*/
